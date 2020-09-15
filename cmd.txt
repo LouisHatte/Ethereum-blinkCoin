@@ -1,0 +1,11 @@
+t = await Token.deployed()
+
+users = await web3.eth.getAccounts()
+u1 = users[0]
+
+x = t.getBalance(t.address).then(r => { return r.toString() })
+x = t.getBalance(u1).then(r => { return r.toString() })
+
+t.giveBlink(u1, 1, { from: u1, value: 1 * 1000000000000000000 })
+
+x = t.balanceOf(u1).then(r => { return r.toString() })
